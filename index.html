@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dark Blog</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #121212;
+      color: #ffffff;
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      color: #ff9800;
+    }
+
+    .blog-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .blog-card {
+      background-color: #1e1e1e;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .blog-card h2 {
+      color: #ffcc00;
+      margin-bottom: 10px;
+    }
+
+    .blog-card p {
+      color: #ccc;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>My Dark Blog</h1>
+  </header>
+
+  <main class="blog-container" id="blogContainer">
+    <!-- Blog cards will be inserted here -->
+  </main>
+
+  <footer>
+    <p>&copy; 2025 My Dark Blog. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const blogs = [
+      {
+        title: "Understanding JavaScript Closures",
+        content: "Closures are a powerful feature in JavaScript. They allow functions to access variables from an outer scope..."
+      },
+      {
+        title: "CSS Grid vs Flexbox",
+        content: "While both Grid and Flexbox are useful layout tools, they serve different purposes. Grid is best for 2D layouts..."
+      },
+      {
+        title: "10 VS Code Extensions for Web Developers",
+        content: "Boost your productivity with these top 10 VS Code extensions every web developer should know about..."
+      }
+    ];
+
+    const blogContainer = document.getElementById('blogContainer');
+
+    blogs.forEach(blog => {
+      const card = document.createElement('div');
+      card.className = 'blog-card';
+      card.innerHTML = `<h2>${blog.title}</h2><p>${blog.content}</p>`;
+      blogContainer.appendChild(card);
+    });
+  </script>
+</body>
+</html>
