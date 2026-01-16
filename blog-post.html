@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post | Nadew Jayaweera</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #ec4899;
+            --accent: #06b6d4;
+            --dark: #0f172a;
+            --dark-light: #1e293b;
+            --gray: #64748b;
+            --light: #f1f5f9;
+            --white: #ffffff;
+            --gradient-1: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+            --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--dark);
+            color: var(--white);
+            line-height: 1.6;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .back-link {
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s ease;
+        }
+
+        .back-link:hover {
+            gap: 1rem;
+        }
+
+        .post-container {
+            max-width: 800px;
+            margin: 120px auto 0;
+            padding: 0 5% 80px;
+        }
+
+        .post-header {
+            margin-bottom: 3rem;
+        }
+
+        .post-category {
+            display: inline-block;
+            background: var(--gradient-1);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .post-header h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .post-meta {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            color: var(--gray);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .post-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .post-image {
+            width: 100%;
+            height: 400px;
+            border-radius: 10px;
+            object-fit: cover;
+            margin-bottom: 3rem;
+        }
+
+        .post-content {
+            font-size: 1.1rem;
+            color: var(--light);
+            line-height: 1.8;
+        }
+
+        .post-content h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem;
+            color: var(--white);
+        }
+
+        .post-content h3 {
+            font-size: 1.3rem;
+            margin: 1.5rem 0 0.8rem;
+            color: var(--primary);
+        }
+
+        .post-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .post-content ul, .post-content ol {
+            margin: 1.5rem 0 1.5rem 2rem;
+        }
+
+        .post-content li {
+            margin-bottom: 0.8rem;
+        }
+
+        .post-content code {
+            background: var(--dark-light);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            color: var(--accent);
+            font-family: 'Courier New', monospace;
+        }
+
+        .post-content pre {
+            background: var(--dark-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--primary);
+        }
+
+        .post-content pre code {
+            background: none;
+            padding: 0;
+            color: var(--light);
+        }
+
+        footer {
+            padding: 3rem 5%;
+            background: var(--dark-light);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+            color: var(--gray);
+        }
+
+        @media (max-width: 768px) {
+            .post-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .post-image {
+                height: 250px;
+            }
+
+            .post-meta {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="#" class="logo">Nadew's Blog</a>
+        <a href="cybersec_blog.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Blog</a>
+    </nav>
+
+    <div class="post-container">
+        <div class="post-header">
+            <span class="post-category" id="postCategory">Security</span>
+            <h1 id="postTitle">Blog Post Title</h1>
+            <div class="post-meta">
+                <span><i class="far fa-calendar"></i> <span id="postDate">Jan 1, 2026</span></span>
+                <span><i class="far fa-clock"></i> <span id="postReadTime">5 min</span> read</span>
+                <span><i class="far fa-user"></i> Nadew Jayaweera</span>
+            </div>
+        </div>
+
+        <img id="postImage" src="" alt="Post Cover" class="post-image">
+
+        <div class="post-content" id="postContent">
+            <!-- Content will be inserted here -->
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Nadew Jayaweera. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const blogPosts = {
+            1: {
+                title: "Advanced SQL Injection Techniques in 2026",
+                category: "Security",
+                date: "Jan 15, 2026",
+                readTime: "8 min",
+                image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=500&fit=crop",
+                content: `
+                    <p>SQL Injection remains one of the most critical web application vulnerabilities in 2026. Despite years of security awareness and preventive measures, attackers continue to evolve their techniques and find new ways to exploit poorly sanitized database queries.</p>
+
+                    <h2>Understanding Modern SQL Injection Attacks</h2>
+                    <p>SQL Injection attacks work by inserting malicious SQL code into input fields that are later executed by the database. In 2026, we're seeing increasingly sophisticated variations that bypass common security measures.</p>
+
+                    <h3>Common SQL Injection Vectors</h3>
+                    <ul>
+                        <li><strong>Authentication Bypass:</strong> Manipulating login queries to bypass authentication</li>
+                        <li><strong>Data Exfiltration:</strong> Extracting sensitive information from databases</li>
+                        <li><strong>Data Modification:</strong> Altering or deleting database records</li>
+                        <li><strong>Privilege Escalation:</strong> Gaining administrative access to the database</li>
+                    </ul>
+
+                    <h2>Detection and Prevention Strategies</h2>
+                    <p>Modern web applications require multiple layers of protection against SQL injection attacks:</p>
+
+                    <h3>Prepared Statements</h3>
+                    <p>The most effective defense is using parameterized queries (prepared statements). This separates SQL code from data:</p>
+                    <pre><code>// Vulnerable Code
+String query = "SELECT * FROM users WHERE username='" + username + "'";
+
+// Secure Code with Prepared Statements
+String query = "SELECT * FROM users WHERE username = ?";
+PreparedStatement pstmt = connection.prepareStatement(query);
+pstmt.setString(1, username);
+ResultSet rs = pstmt.executeQuery();</code></pre>
+
+                    <h3>Input Validation</h3>
+                    <p>Implement strict input validation to ensure data matches expected patterns. Use whitelisting rather than blacklisting to reject suspicious input.</p>
+
+                    <h3>Least Privilege Principle</h3>
+                    <p>Database accounts should have minimal necessary permissions. A web application should never connect with a database superuser account.</p>
+
+                    <h2>Real-World Scenarios</h2>
+                    <p>Understanding how attacks work in practice helps developers recognize and prevent them. Consider this e-commerce example:</p>
+                    <pre><code>// Vulnerable query
+SELECT products FROM catalog WHERE category = '" + userInput + "'"
+
+// Attack payload
+userInput = "' OR '1'='1"
+// Results in: SELECT products FROM catalog WHERE category = '' OR '1'='1'
+// This returns all products regardless of category!</code></pre>
+
+                    <h2>Advanced Protection Techniques</h2>
+                    <p>Beyond the basics, organizations should implement:</p>
+                    <ul>
+                        <li>Web Application Firewalls (WAF) to detect and block injection attempts</li>
+                        <li>Regular security audits and penetration testing</li>
+                        <li>Security training for development teams</li>
+                        <li>Automated code scanning tools in CI/CD pipelines</li>
+                        <li>Runtime application self-protection (RASP)</li>
+                    </ul>
+
+                    <h2>Conclusion</h2>
+                    <p>SQL Injection attacks continue to evolve, but with proper defensive measures, developers can effectively protect their applications. The key is implementing multiple layers of protection and maintaining security awareness throughout the development lifecycle.</p>
+                `
+            },
+            2: {
+                title: "Building a Custom Port Scanner with Python",
+                category: "Tutorial",
+                date: "Jan 12, 2026",
+                readTime: "5 min",
+                image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=400&h=250&fit=crop",
+                content: `
+                    <p>Port scanning is a fundamental technique in network security and reconnaissance. In this tutorial, we'll build a custom port scanner using Python's socket library.</p>
+
+                    <h2>Prerequisites</h2>
+                    <p>You'll need Python 3.6+ installed on your system. This project uses only Python standard library modules, so no external dependencies are required.</p>
+
+                    <h2>Understanding Port Scanning</h2>
+                    <p>A port scanner sends network packets to a target system and listens for responses. Open ports respond, indicating a service is running on that port.</p>
+
+                    <h3>Common Port States</h3>
+                    <ul>
+                        <li><strong>Open:</strong> Service actively accepting connections</li>
+                        <li><strong>Closed:</strong> Port is accessible but no service listening</li>
+                        <li><strong>Filtered:</strong> Firewall or security software blocking access</li>
+                    </ul>
+
+                    <h2>Building Your Scanner</h2>
+                    <p>Here's a basic implementation:</p>
+                    <pre><code>import socket
+import sys
+from datetime import datetime
+
+def scan_port(target, port):
+    try:
+        socket.setdefaulttimeout(1)
+        result = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        result.connect((target, port))
+        return True
+    except:
+        return False
+
+def main():
+    target = input("Enter target IP: ")
+    print(f"Starting scan on {target} at {datetime.now()}")
+    
+    for port in range(1, 1025):
+        if scan_port(target, port):
+            print(f"Port {port} is open")
+    
+    print(f"Scan complete at {datetime.now()}")
+
+if __name__ == "__main__":
+    main()</code></pre>
+
+                    <h2>Enhancing Your Scanner</h2>
+                    <p>For better performance, implement threading to scan multiple ports simultaneously:</p>
+                    <pre><code>import threading
+
+def threaded_scan(target, ports):
+    threads = []
+    for port in ports:
+        t = threading.Thread(target=lambda p=port: scan_port(target, p))
+        threads.append(t)
+        t.start()
+    
+    for t in threads:
+        t.join()</code></pre>
+
+                    <h2>Important Ethical Considerations</h2>
+                    <p>Only scan networks and systems you own or have explicit permission to test. Unauthorized port scanning may violate computer fraud laws in your jurisdiction.</p>
+
+                    <h2>Conclusion</h2>
+                    <p>You now have a functional port scanner! This forms the foundation for more advanced network reconnaissance tools.</p>
+                `
+            },
+            3: {
+                title: "Zero-Day Vulnerabilities: What You Need to Know",
+                category: "Security",
+                date: "Jan 10, 2026",
+                readTime: "6 min",
+                image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400&h=250&fit=crop",
+                content: `
+                    <p>Zero-day vulnerabilities represent one of the most dangerous threats in cybersecurity. Unlike known vulnerabilities, these are unknown to vendors and the security community, making them extremely difficult to defend against.</p>
+
+                    <h2>What is a Zero-Day?</h2>
+                    <p>A zero-day vulnerability is a security flaw that is unknown to the software vendor. The term "zero-day" refers to the number of days developers have had to fix the issue—which is zero.</p>
+
+                    <h3>Characteristics of Zero-Days</h3>
+                    <ul>
+                        <li>Unknown to the vendor and security community</li>
+                        <li>No patch or fix available</li>
+                        <li>Attackers have exclusive knowledge and exploit code</li>
+                        <li>Defense is nearly impossible without proactive measures</li>
+                        <li>Typically high-value targets for attackers</li>
+                    </ul>
+
+                    <h2>The Zero-Day Lifecycle</h2>
+                    <p><strong>Discovery Phase:</strong> An attacker or researcher discovers the vulnerability</p>
+                    <p><strong>Exploitation Phase:</strong> The vulnerability is exploited before public disclosure</p>
+                    <p><strong>Disclosure Phase:</strong> The vulnerability becomes known to vendors and the public</p>
+                    <p><strong>Patching Phase:</strong> Vendors develop and release patches</p>
+                    <p><strong>Update Phase:</strong> Users update their systems</p>
+
+                    <h2>Real-World Examples in 2026</h2>
+                    <p>Several high-profile zero-days have impacted organizations globally. Each demonstrates the critical importance of defense-in-depth strategies.</p>
+
+                    <h2>Organizational Preparation</h2>
+                    <p>While you cannot defend against unknown vulnerabilities directly, you can prepare:</p>
+                    <ul>
+                        <li>Maintain detailed asset inventory</li>
+                        <li>Implement network segmentation</li>
+                        <li>Deploy intrusion detection systems</li>
+                        <li>Use endpoint detection and response (EDR)</li>
+                        <li>Monitor for unusual behavior patterns</li>
+                        <li>Maintain incident response procedures</li>
+                    </ul>
+
+                    <h2>The Bug Bounty Connection</h2>
+                    <p>Many organizations now run bug bounty programs to incentivize researchers to disclose vulnerabilities responsibly rather than exploiting them.</p>
+
+                    <h2>Conclusion</h2>
+                    <p>Zero-days will remain a reality of cybersecurity. The best defense is a comprehensive security posture that assumes breaches will occur and focuses on detection and response.</p>
+                `
+            },
+            4: {
+                title: "Top 10 Essential Tools for Ethical Hackers",
+                category: "Tools",
+                date: "Jan 8, 2026",
+                readTime: "4 min",
+                image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=250&fit=crop",
+                content: `
+                    <p>Every security professional needs a reliable toolkit. Here are the 10 essential tools that belong in every ethical hacker's arsenal.</p>
+
+                    <h2>Network Analysis Tools</h2>
+                    <p><strong>1. Wireshark</strong> - The industry standard for network packet analysis. Capture and inspect traffic in real-time.</p>
+                    <p><strong>2. Nmap</strong> - Network reconnaissance tool for discovering hosts and services on a computer network.</p>
+
+                    <h2>Vulnerability Assessment</h2>
+                    <p><strong>3. Nessus</strong> - Comprehensive vulnerability scanner that identifies security issues in networks and systems.</p>
+                    <p><strong>4. OpenVAS</strong> - Open-source vulnerability management tool with continuous security monitoring.</p>
+
+                    <h2>Web Application Testing</h2>
+                    <p><strong>5. Burp Suite</strong> - Integrated platform for web application security testing with powerful proxy capabilities.</p>
+                    <p><strong>6. OWASP ZAP</strong> - Free, open-source tool for finding security vulnerabilities in web applications.</p>
+
+                    <h2>Password and Access Testing</h2>
+                    <p><strong>7. Hashcat</strong> - Advanced password recovery tool for cracking hashes offline.</p>
+                    <p><strong>8. Hydra</strong> - Fast network login cracker supporting many protocols.</p>
+
+                    <h2>Exploitation and Post-Exploitation</h2>
+                    <p><strong>9. Metasploit Framework</strong> - Penetration testing framework with hundreds of exploits and payloads.</p>
+                    <p><strong>10. Empire</strong> - Post-exploitation framework focusing on stealth and advanced capabilities.</p>
+
+                    <h2>Building Your Toolkit</h2>
+                    <p>Start with free, open-source tools like Nmap and Wireshark. As you progress, consider commercial solutions like Burp Suite Professional for advanced features.</p>
+
+                    <h2>Continuous Learning</h2>
+                    <p>The security landscape evolves constantly. Keep your tools updated and continue learning new techniques and methodologies.</p>
+
+                    <h2>Conclusion</h2>
+                    <p>These tools form the foundation of professional security testing. Mastery comes with practice and hands-on experience.</p>
+                `
+            },
+            5: {
+                title: "XSS Attack Prevention: Complete Guide",
+                category: "Tutorial",
+                date: "Jan 5, 2026",
+                readTime: "7 min",
+                image: "https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=400&h=250&fit=crop",
+                content: `
+                    <p>Cross-Site Scripting (XSS) is one of the OWASP Top 10 vulnerabilities and remains a critical threat to web applications. This comprehensive guide covers identification, prevention, and remediation.</p>
+
+                    <h2>Understanding XSS Attacks</h2>
+                    <p>XSS occurs when an attacker injects malicious scripts into web pages viewed by other users. The injected script executes in the victim's browser with their privileges.</p>
+
+                    <h3>Types of XSS Attacks</h3>
+                    <ul>
+                        <li><strong>Stored XSS:</strong> Malicious script stored in database and executed when page loads</li>
+                        <li><strong>Reflected XSS:</strong> Script sent via URL parameter and reflected in response</li>
+                        <li><strong>DOM-based XSS:</strong> Client-side vulnerability in JavaScript code</li>
+                    </ul>
+
+                    <h2>Attack Scenarios</h2>
+                    <p>An attacker could steal session cookies, perform actions on behalf of users, or redirect to malicious sites.</p>
+
+                    <h2>Prevention Best Practices</h2>
+                    <p><strong>1. Input Validation</strong> - Validate all user input on both client and server side.</p>
+                    <p><strong>2. Output Encoding</strong> - Encode data before displaying it in HTML context.</p>
+                    <p><strong>3. Content Security Policy</strong> - Implement CSP headers to restrict script execution.</p>
+
+                    <h2>Implementation Examples</h2>
+                    <p><strong>Vulnerable Code:</strong></p>
+                    <pre><code>&lt;% String userName = request.getParameter("user"); %&gt;
+Welcome &lt;%= userName %&gt;</code></pre>
+
+                    <p><strong>Secure Code:</strong></p>
+                    <pre><code>&lt;% String userName = request.getParameter("user"); %&gt;
+Welcome &lt;%= HtmlUtils.htmlEscape(userName) %&gt;</code></pre>
+
+                    <h2>Modern Framework Protections</h2>
+                    <p>Modern frameworks like React and Angular provide built-in XSS protection by default. Always keep frameworks updated.</p>
+
+                    <h2>Testing for XSS Vulnerabilities</h2>
+                    <ul>
+                        <li>Use web security scanners like Burp Suite or OWASP ZAP</li>
+                        <li>Manual testing with common payloads</li>
+                        <li>Test all input fields and parameters</li>
+                        <li>Include encoded and obfuscated payloads</li>
+                    </ul>
+
+                    <h2>Conclusion</h2>
+                    <p>XSS prevention requires a layered approach combining input validation, output encoding, and security headers. Stay vigilant and keep testing!</p>
+                `
+            },
+            6: {
+                title: "Latest Cybersecurity Trends in 2026",
+                category: "News",
+                date: "Jan 3, 2026",
+                readTime: "3 min",
+                image: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=400&h=250&fit=crop",
+                content: `
+                    <p>The cybersecurity landscape continues to evolve rapidly. Here are the major trends shaping the industry in 2026.</p>
+
+                    <h2>AI-Powered Security</h2>
+                    <p>Artificial intelligence and machine learning are becoming central to both offensive and defensive security. AI-powered threat detection, automated response systems, and anomaly detection are now mainstream.</p>
+
+                    <h2>Cloud Security Focus</h2>
+                    <p>As organizations migrate to cloud infrastructure, cloud security maturity becomes critical. Configuration management, identity and access management, and data protection in cloud environments are top priorities.</p>
+
+                    <h2>Supply Chain Attacks</h2>
+                    <p>Sophisticated attacks targeting software supply chains have increased dramatically. Organizations are now vetting vendors and monitoring dependencies more carefully.</p>
+
+                    <h2>Zero Trust Architecture</h2>
+                    <p>The "never trust, always verify" model is becoming standard. Zero trust principles eliminate implicit trust and require continuous verification regardless of network location.</p>
+
+                    <h2>Ransomware Evolution</h2>
+                    <p>Ransomware attacks have become more targeted and destructive. Double encryption, data theft, and ransom demands continue to escalate.</p>
+
+                    <h2>IoT Security Challenges</h2>
+                    <p>The proliferation of Internet of Things devices creates new security challenges. IoT vulnerabilities remain a critical concern for enterprise networks.</p>
+
+                    <h2>Regulatory Landscape</h2>
+                    <p>Compliance requirements continue to expand globally. GDPR, CCPA, and emerging regulations drive security investments and incident reporting requirements.</p>
+
+                    <h2>Key Takeaways</h2>
+                    <ul>
+                        <li>Invest in AI-driven security solutions</li>
+                        <li>Implement zero trust architecture</li>
+                        <li>Focus on supply chain security</li>
+                        <li>Enhance cloud security posture</li>
+                        <li>Stay compliant with regulations</li>
+                    </ul>
+
+                    <h2>Looking Forward</h2>
+                    <p>2026 will continue to challenge security professionals. Organizations that prioritize security as a business enabler, not just a cost center, will be best positioned to defend against evolving threats.</p>
+                `
+            }
+        };
+
+        function getPostIdFromURL() {
+            const params = new URLSearchParams(window.location.search);
+            return params.get('id');
+        }
+
+        function loadPost() {
+            const postId = getPostIdFromURL();
+            const post = blogPosts[postId];
+
+            if (!post) {
+                document.querySelector('.post-container').innerHTML = '<p>Post not found.</p>';
+                return;
+            }
+
+            document.getElementById('postTitle').textContent = post.title;
+            document.getElementById('postCategory').textContent = post.category;
+            document.getElementById('postDate').textContent = post.date;
+            document.getElementById('postReadTime').textContent = post.readTime;
+            document.getElementById('postImage').src = post.image;
+            document.getElementById('postContent').innerHTML = post.content;
+            document.title = `${post.title} | Nadew Jayaweera`;
+        }
+
+        loadPost();
+    </script>
+</body>
+</html>
